@@ -7,33 +7,29 @@ from time import sleep
 BLACK=(0, 0, 0)
 padWidth=1550
 padHeight=875
-rockImage=[r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock1.png", r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock2.png", r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock3.png", r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock4.png", r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock5.png",
-           r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock6.png", r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock7.png", r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock8.png", r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock9.png", r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock10.png",
-           r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock11.png", r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock12.png", r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock13.png", r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock14.png", r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock15.png",
-           r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock16.png", r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock17.png", r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock18.png", r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock19.png", r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock20.png",
-           r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock21.png", r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock22.png", r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock23.png", r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock24.png", r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\rock25.png"]
-enemyImage=r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\enemy.png"
+rockImage=[r"운석 이미지 파일 경로"]
+enemyImage=r"적 전투기 이미지 파일 경로"
 
 def initGame():
     global gamePad, clock, background, fighter, missile, explosion, heart
     pygame.init()
     gamePad=pygame.display.set_mode((padWidth, padHeight))
     pygame.display.set_caption("CO;DE shoot'em up game")
-    background=pygame.image.load(r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\space.jpg")
+    background=pygame.image.load(r"배경 이미지 파일 경로")
     background = pygame.transform.scale(background, (padWidth, padHeight))
-    fighter=pygame.image.load(r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\fighter.png")
+    fighter=pygame.image.load(r"전투기 이미지 파일 경로")
     fighter_width=95
     fighter_height=95
     fighter=pygame.transform.scale(fighter, (fighter_width, fighter_height))
-    missile=pygame.image.load(r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\missile.png")
+    missile=pygame.image.load(r"미사일 이미지 파일 경로")
     missle_width=50
     missile_height=40
     missile=pygame.transform.scale(missile, (missle_width, missile_height))
-    explosion=pygame.image.load(r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\explosion.png")
+    explosion=pygame.image.load(r"폭발 이미지 파일 경로")
     explosion_width=200
     explosion_height=200
     explosion=pygame.transform.scale(explosion, (explosion_width, explosion_height))
-    heart=pygame.image.load(r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\heart.png")
+    heart=pygame.image.load(r"생명 이미지 파일 경로")
     heart_width=80
     heart_height=60
     heart=pygame.transform.scale(heart, (heart_width, heart_height))
@@ -71,20 +67,20 @@ def getenemy():
     return enemy
 
 def load_heart_image():
-    heart_image_path = r"C:\Users\user\OneDrive\바탕 화면\shmup-game\image\heart.png"
+    heart_image_path = r"생명 이미지 파일 경로"
     heart_width = 100
     heart_height = 289
     return load_image(heart_image_path, (heart_width, heart_height))
 
 def writeScore(count):
     global gamePad
-    font=pygame.font.Font(r"C:\Users\user\OneDrive\바탕 화면\shmup-game\DungGeunMo TTF\DungGeunMo.ttf", 30)
+    font=pygame.font.Font(r"폰트 파일 경로", 30)
     text=font.render("점수: "+str(count), True, (255, 255, 255))
     gamePad.blit(text, (30, 20))
 
 def writeMessage_gameClear(text):
     global gamePad
-    textfont=pygame.font.Font(r"C:\Users\user\OneDrive\바탕 화면\shmup-game\DungGeunMo TTF\DungGeunMo.ttf", 80)
+    textfont=pygame.font.Font(r"폰트 파일 경로", 80)
     text=textfont.render(text, True, (0, 0, 255))
     textpos=text.get_rect()
     textpos.center=(padWidth/2, padHeight/2)
@@ -93,7 +89,7 @@ def writeMessage_gameClear(text):
 
 def writeMessage_gameOver(text):
     global gamePad
-    textfont=pygame.font.Font(r"C:\Users\user\OneDrive\바탕 화면\shmup-game\DungGeunMo TTF\DungGeunMo.ttf", 80)
+    textfont=pygame.font.Font(r"폰트 파일 경로", 80)
     text=textfont.render(text, True, (255, 0, 0))
     textpos=text.get_rect()
     textpos.center=(padWidth/2, padHeight/2)
@@ -102,7 +98,7 @@ def writeMessage_gameOver(text):
 
 def restart(text):
     global gamePad
-    textfont=pygame.font.Font(r"C:\Users\user\OneDrive\바탕 화면\shmup-game\DungGeunMo TTF\DungGeunMo.ttf", 30)
+    textfont=pygame.font.Font(r"폰트 파일 경로", 30)
     text=textfont.render(text, True, (255, 255, 255))
     textpos=text.get_rect()
     textpos.center=(padWidth/2, padHeight/2+60)
